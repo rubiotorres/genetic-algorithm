@@ -1,0 +1,244 @@
+%
+% Modelo de artigo científico em português brasileiro e em conformidade com as normas da ABNT
+% Documento principal
+%
+% *****************************************************************************
+% *  Centro Federal de Educação Tecnológica de Minas Gerais - CEFET-MG        *
+% *  Laboratório de Sistemas Inteligentes - LSI                               *
+% *                                                                           *
+% *  Autor: Denise de Souza <densouza@gmail.com>                              *
+% *  Autor: Henrique E. Borges <henrique@lsi.cefetmg.br>                      *
+% *                                                                           *
+% *****************************************************************************
+
+
+
+% -----------------------------------------------------------------------------
+%   Aspas automática
+% -----------------------------------------------------------------------------
+
+\newcommand{\aspas}[1]{``{#1}''}
+
+
+
+% -----------------------------------------------------------------------------
+%   Correção dos comandos de formatação do ambiente figura e tabela
+% -----------------------------------------------------------------------------
+
+\makeatletter
+\newenvironment{tablehere}
+  {\def\@captype{table}}
+  {}
+
+\newenvironment{figurehere}
+  {\def\@captype{figure}}
+  {}
+\makeatother
+
+
+
+% -----------------------------------------------------------------------------
+%   Definição dos comandos para formatação do título do artigo
+% -----------------------------------------------------------------------------
+
+\providecommand{\imprimirTitulo}{}
+\newcommand{\tituloA}[1]{\renewcommand{\imprimirTitulo}{#1}}
+
+\newcommand{\textoTitulo}{
+%   \begin{tikzpicture}[remember picture,overlay]
+%     \node [yshift=-2cm,fill=white] at (current page.north) [text width=20cm,text centered,text height=1cm] {};
+%   \end{tikzpicture}
+    {\LARGE\textbf{\imprimirTitulo{}}}
+}
+
+
+
+% -----------------------------------------------------------------------------
+%   Definição dos comandos para tratamento dos autores do artigo
+%   Máximo de 5 autores
+% -----------------------------------------------------------------------------
+
+\providecommand{\imprimirautorA}{}
+\newcommand{\autorA}[1]{\renewcommand{\imprimirautorA}{#1}}
+\providecommand{\imprimirautorB}{}
+\newcommand{\autorB}[1]{\renewcommand{\imprimirautorB}{#1}}
+\providecommand{\imprimirautorC}{}
+\newcommand{\autorC}[1]{\renewcommand{\imprimirautorC}{#1}}
+\providecommand{\imprimirautorD}{}
+\newcommand{\autorD}[1]{\renewcommand{\imprimirautorD}{#1}}
+\providecommand{\imprimirautorE}{}
+\newcommand{\autorE}[1]{\renewcommand{\imprimirautorE}{#1}}
+
+
+
+% -----------------------------------------------------------------------------
+%   Definição dos comandos para formatação da filiação instituicional dos autores do artigo
+% -----------------------------------------------------------------------------
+
+\providecommand{\imprimirinstituicaoA}{}
+\newcommand{\instituicaoA}[1]{\renewcommand{\imprimirinstituicaoA}{#1}}
+\providecommand{\imprimirinstituicaoB}{}
+\newcommand{\instituicaoB}[1]{\renewcommand{\imprimirinstituicaoB}{#1}}
+\providecommand{\imprimirinstituicaoC}{}
+\newcommand{\instituicaoC}[1]{\renewcommand{\imprimirinstituicaoC}{#1}}
+\providecommand{\imprimirinstituicaoD}{}
+\newcommand{\instituicaoD}[1]{\renewcommand{\imprimirinstituicaoD}{#1}}
+\providecommand{\imprimirinstituicaoE}{}
+\newcommand{\instituicaoE}[1]{\renewcommand{\imprimirinstituicaoE}{#1}}
+
+\newcommand{\filiacaoA}[5]{
+	\instituicaoA{#1} \instituicaoB{#2} \instituicaoC{#3} \instituicaoD{#4} \instituicaoE{#5}
+}
+
+\providecommand{\imprimirautoresA}{}
+\providecommand{\imprimirfiliacaoA}{}
+\newcommand{\autoresA}[5]{ 
+
+	\autorA{#1} \autorB{#2} \autorC{#3} \autorD{#4} \autorE{#5}
+
+	\renewcommand{\imprimirautoresA}{
+		\ifthenelse{\equal{#5}{}}
+		{
+			\ifthenelse{\equal{#4}{}}
+			{
+				\ifthenelse{\equal{#3}{}}
+				{
+					\ifthenelse{\equal{#2}{}}
+					{
+						\imprimirautorA{}$^1$
+					}
+					{
+						\imprimirautorA{}$^1$, \imprimirautorB{}$^2$
+					}	
+				}
+				{
+					\imprimirautorA{}$^1$, \imprimirautorB{}$^2$, \imprimirautorC{}$^3$
+				}
+			}	
+			{
+				\imprimirautorA{}$^1$, \imprimirautorB{}$^2$, \imprimirautorC{}$^3$, \imprimirautorD{}$^4$
+			}		
+		}
+		{
+			\imprimirautorA{}$^1$, \imprimirautorB{}$^2$, \imprimirautorC{}$^3$, \imprimirautorD{}$^4$, \imprimirautorE{}$^5$
+		}
+	}
+
+	\renewcommand{\imprimirfiliacaoA}{
+		\ifthenelse{\equal{#5}{}}
+		{
+			\ifthenelse{\equal{#4}{}}
+			{
+				\ifthenelse{\equal{#3}{}}
+				{
+					\ifthenelse{\equal{#2}{}}
+					{
+						\let\thefootnote\relax\footnote{\hspace{-0.6cm}\tiny{\imprimirautorcorrespondente \\ 
+						{\color{white}d}\hspace{-0.6cm}$^1$\imprimirinstituicaoA{}}} 
+					}
+					{
+						\let\thefootnote\relax\footnote{\hspace{-0.6cm}\tiny{\imprimirautorcorrespondente \\  
+						{\color{white}d}\hspace{-0.6cm}$^1$\imprimirinstituicaoA{} \\ {\color{white}d}\hspace{-0.6cm}$^2$\imprimirinstituicaoB{}}} 
+					}	
+				}
+				{
+					\let\thefootnote\relax\footnote{\hspace{-0.6cm}\tiny{\imprimirautorcorrespondente \\ 
+					{\color{white}d}\hspace{-0.6cm}$^1$\imprimirinstituicaoA{} \\ {\color{white}d}\hspace{-0.6cm}$^2$\imprimirinstituicaoB{} \\ 
+					{\color{white}d}\hspace{-0.6cm}$^3$\imprimirinstituicaoC{}}} 
+				}
+			}	
+			{
+				\let\thefootnote\relax\footnote{\hspace{-0.6cm}\tiny{\imprimirautorcorrespondente \\ 
+				{\color{white}d}\hspace{-0.6cm}$^1$\imprimirinstituicaoA{} \\ {\color{white}d}\hspace{-0.6cm}$^2$\imprimirinstituicaoB{} \\ 
+				{\color{white}d}\hspace{-0.6cm}$^3$\imprimirinstituicaoC{} \\ {\color{white}d}\hspace{-0.6cm}$^4$\imprimirinstituicaoD{}}} 
+			}		
+		}
+		{
+			\let\thefootnote\relax\footnote{\hspace{-0.6cm}\tiny{\imprimirautorcorrespondente \\ 
+			{\color{white}d}\hspace{-0.6cm}$^1$\imprimirinstituicaoA{} \\ {\color{white}d}\hspace{-0.6cm}$^2$\imprimirinstituicaoB{} \\ 
+			{\color{white}d}\hspace{-0.6cm}$^3$\imprimirinstituicaoC{} \\ {\color{white}d}\hspace{-0.6cm}$^4$\imprimirinstituicaoD{} \\
+			{\color{white}d}\hspace{-0.6cm}$^5$\imprimirinstituicaoE{}}} 
+		}
+	}
+
+}	
+
+
+
+% -----------------------------------------------------------------------------
+% Definição dos comandos para formatação do autor correspondente do artigo
+% Obrigatoriamente deve ser um dos autores do artigo já relacionados 
+% -----------------------------------------------------------------------------
+
+\providecommand{\imprimirautorCor}{}
+\newcommand{\autorCor}[1]{\renewcommand{\imprimirautorCor}{#1}}
+
+\providecommand{\imprimiremailCor}{}
+\newcommand{\emailCor}[1]{\renewcommand{\imprimiremailCor}{#1}}
+
+\providecommand{\imprimirautorcorrespondente}{}
+\newcommand{\autorcorrespondente}[2]{
+
+	\autorCor{#1} \emailCor{#2}
+	
+	\renewcommand{\imprimirautorcorrespondente}{
+		\ifthenelse{\equal{#1}{\imprimirautorA}}
+			{\hspace{-0.5ex}$^1$Autor correspondente: \mbox{#2}}
+			{
+				\ifthenelse{\equal{#1}{\imprimirautorB}}
+					{\hspace{-0.5ex}$^2$Autor correspondente: \mbox{#2}}
+					{
+						\ifthenelse{\equal{#1}{\imprimirautorC}}
+							{\hspace{-0.5ex}$^3$Autor correspondente: \mbox{#2}}
+							{
+								\ifthenelse{\equal{#1}{\imprimirautorD}}
+									{\hspace{-0.5ex}$^4$Autor correspondente: \mbox{#2}}
+									{\hspace{-0.5ex}$^5$Autor correspondente: \mbox{#2}}
+							}
+					}	
+			}
+	} 
+}
+
+
+
+% -----------------------------------------------------------------------------
+% Definição do comando para formatação do resumo e palavras-chave
+% -----------------------------------------------------------------------------
+
+\providecommand{\imprimirresumoA}{}
+\newcommand{\resumoA}[1]{\renewcommand{\imprimirresumoA}{#1}}
+
+\providecommand{\imprimirpalavrachaveA}{}
+\newcommand{\palavrachaveA}[1]{\renewcommand{\imprimirpalavrachaveA}{#1}}
+
+\newcommand{\imprimirResumo}{
+    \begin{tabular}{p{0.15cm}p{12.5cm}p{0.15cm}}
+      & \multicolumn{1}{c}{\small\textbf{Resumo}} & \\
+      & {\textit{\small \imprimirresumoA}} & \\ 
+      && \\ \vspace{-0.5cm}
+      & {\small\underline{\textbf{Palavras-chave:}} \ \imprimirpalavrachaveA} & \\ [0.5cm]
+    \end{tabular}	
+}
+
+
+
+% -----------------------------------------------------------------------------
+% Impressão dos dados do artigo
+% -----------------------------------------------------------------------------
+
+\newcommand{\imprimirDadosArtigo}{
+%-----> Introdução do cabeçalho e rodapé de página
+%   \pagestyle{fancy}
+%   \rhead{\small \imprimirTitulo}
+
+	\twocolumn[{
+		\begin{center}
+			\textoTitulo \\[0.5cm]
+			\imprimirautoresA \\[0.5cm]
+			\imprimirResumo \\[0.5cm]
+		\end{center}
+	}]
+
+	\imprimirfiliacaoA
+}

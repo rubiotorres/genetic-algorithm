@@ -1,0 +1,16 @@
+﻿Este é um modelo de artigo a ser escrito em português brasileiro (eventualmetne, com partes em inglês) formatado conforme as normas da ABNT.
+
+Para o modelo funcionar corretamente, atente para as seguintes questões:
+a) use em seu editor Latex, a codificação UTF8;
+b) o pacote abntex2 deve estar instalado e funcionando;
+c) edite e insera seu texto nas seções definidas ou acrescente novas seções;
+d) use acentuação direta, sem recorrer ao modo "Tex" de colocar acentuação;
+e) a compilação de modo a incluir corretamente as referências bibliográficas deve ser da seguinte forma:
+	pdflatex meuArtigo.tex;         -> gera um pdf, porém sem as referências, apenas indicando-as
+	bibtex meuArtigo.aux;		-> varre o arquivo myrefs.bib e busca pelas referências utilizadas
+	pdflatex meuArtigo.tex		-> insere as referências e chamadas nos locais apropriados
+	pdflatex meuArtigo.tex 		-> faz a compilação final, verificando tudo
+f) alternativamente ao disposto no item e), poderá er utilizado o comando makefile, que faz exatamente o mesmo.
+g) Se for necessário converter algum texto escrito em outra codificação (por exemplo, cp1252) para UTF8, basta abrir seu arquivo com outra codificação no aplicativo "Notepad" do windows e depois selecionar "salvar como" e escolher a codificação utf8.
+
+Por favor, reporte erros, falhas ou incongruências com a norma ABNT para henrique@lsi.cefetg.br.

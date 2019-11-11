@@ -1,0 +1,180 @@
+%
+% Modelo de artigo científico em português brasileiro e em conformidade com as normas da ABNT
+% Documento principal
+%
+% *****************************************************************************
+% *  Centro Federal de Educação Tecnológica de Minas Gerais - CEFET-MG        *
+% *  Laboratório de Sistemas Inteligentes - LSI                               *
+% *                                                                           *
+% *  Autor: Denise de Souza <densouza@gmail.com>                              *
+% *  Autor: Henrique E. Borges <henrique@lsi.cefetmg.br>                      *
+% *                                                                           *
+% *****************************************************************************
+
+
+
+\documentclass[
+%   opções da classe memoir
+      article,					% Indica que é um artigo científico
+      %11pt,					% Tamanho da fonte
+      twocolumn,				% Número de colunas
+      %twoside,					% Impressão em frente (anverso) e verso. Oposto a oneside
+      %oneside,					% Impressão apenas no anverso. Oposto a twoside
+      a4paper,					% Tamanho do papel
+%   opções da classe abntex2
+      %chapter=TITLE,			% Títulos de capítulos convertidos para letras maiúsculas
+      %section=TITLE,			% Títulos de seções convertidos para letras maiúsculas
+      %subsection=TITLE,		% Títulos de subseções convertidos para letras maiúsculas
+      %subsubsection=TITLE 		% Títulos de subsubseções convertidos para letras maiúsculas
+%   opções do pacote babel
+      english,					% Idioma adicional para hifenização
+      brazil,					% O ultimo idioma indicado será o principal idioma do documento
+      sumario=tradicional
+]{abntex2} 
+
+
+
+% -----------------------------------------------------------------------------
+%    Pacotes fundamentais 
+% -----------------------------------------------------------------------------
+
+\usepackage[T1]{fontenc}		% Seleção de código de fonte
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+%\usepackage[latin1]{inputenc}	% Codificação do documento (conversão automatica dos acentos)
+\usepackage[utf8]{inputenc}		% Codificação do documento (conversão automatica dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de símbolos
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% Melhora a justificação do documento
+\usepackage{comandos} 			% Novos comandos
+\usepackage{tikz}	 			% Pacote para desenhos
+\usepackage{etoolbox}	 		% Pacote para tratamento de condicionais (if-else-end \ string)
+\usepackage{ifthen}				% Pacote para tratamento de condicionais (if-else-end \ number)
+\usepackage{balance}			% Balanceia o texto no artigo
+\usepackage{babel}				% Usado para definir idioma do documento e respectivas hifenizações
+
+
+
+% -----------------------------------------------------------------------------
+%    Configura as citações
+% -----------------------------------------------------------------------------
+
+\usepackage[alf]{abntex2cite}		% Formata as citações bibliográficas conforme a norma ABNT
+%\usepackage[alf, 					% Formata as citações bibliográficas conforme a norma ABNT
+%	abnt-emphasize=bf, 
+%	bibjustif, 
+%	recuo=0cm, 
+%	abnt-etal-cite=2, 
+%	abnt-etal-list=0]{abntex2cite}
+
+
+% -----------------------------------------------------------------------------
+%   Configurações de aparência do PDF final
+% -----------------------------------------------------------------------------
+
+\definecolor{blue}{RGB}{41,5,195}	% Altera o aspecto da cor azul
+
+\makeatletter
+\hypersetup{
+  %pagebackref=true,
+  %pdftitle={\@title}, 
+  %pdfauthor={\@author},
+  %pdfsubject={Modelo de artigo científico com abnTeX2},
+  %pdfcreator={LaTeX with abnTeX2},
+  %pdfkeywords={abnt}{latex}{abntex}{abntex2}{artigo científico}, 
+  colorlinks=true,       	% true: “links” coloridos; false: “links” em caixas de texto
+  linkcolor=blue,			% Define cor dos “links” internos”
+  citecolor=blue,			% Define cor dos “links” para as referências bibliográficas
+  filecolor=magenta,		% Define cor dos “links” para arquivos
+  urlcolor=blue,			% Define a cor dos “hiperlinks”
+  bookmarksdepth=4
+}
+\makeatother
+
+
+
+% -----------------------------------------------------------------------------
+%   Compila o índice
+% -----------------------------------------------------------------------------
+
+\makeindex
+
+
+
+% -----------------------------------------------------------------------------
+%   Configurações do modelo de artigo em inglês
+% -----------------------------------------------------------------------------
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry}		% Formata as margens do artigo
+\usepackage{multicol} 				% Usado para “layout” do documento em duas-colunas
+
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} 	% Formata as legendas inferiors/superiores em ilustrações (tabelas/figuras)
+\usepackage{booktabs} 				% Réguas horizontais em tabelas
+\usepackage{float} 					% Necessário para tabelas/figuras em ambiente multi-colunas
+									% Devem ser, necessariamente, colocados em pontos específicos junto com [H] (e.g., \begin{table}[H])
+\usepackage{hyperref} 				% Usado para criar “hyperlinks” no PDF
+
+%\usepackage{lettrine} 				% Lettrine é a primeira letra do início de um texto que é aumentada em relação às demais
+
+\usepackage{paralist} 				% Usado para diminuir o espaçamento entrelinhas em listas de “bullets”
+
+\usepackage{abstract} 				% Possibilita a customização do “Abstract”
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} 		% Define a palavra "Abstract" como negrito e tamanho normal
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Define o conteúdo de “Abstract” como itálico e tamanho pequeno
+
+\usepackage{titlesec} 				% Possibilita a customização dos títulos das seções
+% \renewcommand\thechapter{\Roman{chapter}}		 	% Capítulos numerados com algarismos romanos
+% \renewcommand\thesection{\Roman{section}} 		% Seções numeradas com algarismos romanos
+% \renewcommand\thesubsection{\Roman{subsection}} 	% Subseções numeradas com algarismos romanos
+\titleformat{\chapter}[block]{\vspace{-0.5cm}\large\scshape\centering\vspace{-0.5cm}}{}{0em}{} 					% Formata os títulos dos capítulos
+\titleformat{\section}[block]{\large\scshape\centering}{\thesection\hspace{0.5em}--\hspace{0.5em}}{0em}{}  		% Formata os títulos das seções
+\titleformat{\subsection}[block]{\large}{\thesubsection\hspace{0.5em}--\hspace{0.5em}}{0em}{} 					% Formata os títulos das subseções
+% \titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} 	% Formata os títulos das seções
+% \titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} 				% Formata os títulos das subseções
+
+\let\footruleskip\undefined
+\usepackage{fancyhdr}			  % Possibilita a customização de cabeçalhos e rodapés
+\pagestyle{fancy} 				  % Todas as páginas tem cabeçalho e rodapé
+\fancyhead{} 					  % Cabeçalho padrão em branco
+\fancyfoot{}					  % Rodapé padrão em branco
+\fancyhead[C]{\hspace{0.5cm}\imprimirTitulo}	% Customiza o texto do cabeçalho
+\fancyfoot[C]{\thepage} 						% Customiza o texto do rodapé
+
+
+
+% -----------------------------------------------------------------------------
+%   Configura o artigo científico
+% -----------------------------------------------------------------------------
+
+\begin{document}
+
+%\maketitle 				  % Insere título (modificado via pacote "comandos")
+\pagestyle{fancy} 		      % Todas as páginas tem cabeçalho e rodapé
+\thispagestyle{fancy} 		  % Todas as páginas tem cabeçalho e rodapé
+
+
+%   Insere elementos pré-textuais
+
+\input{./01-texto/dadosArtigo}		% Arquivo a ser editado: contém os dados relativos ao artigo científico
+\input{./01-texto/resumo}			% Arquivo a ser editado: contém o “resumo” em português brasileiro
+\imprimirDadosArtigo				% Comando para imprimir os dados do artigo (título, autores e respectivas afiliações
+
+
+%   Insere elementos textuais
+
+\input{./01-texto/introducao}		% Arquivo a ser editado: contém a seção de “introdução” do artigo
+\input{./01-texto/desenvolvimento}	% Arquivo a ser editado: contém a seção de “desenvolvimento” do artigo
+\input{./01-texto/conclusao}		% Arquivo a ser editado: contém a seção de “conclusão” do artigo
+
+	% Caso necessário, qualquer dos arquivos anteriores podem ser copiados e renomeados de modo a criar novas seções
+
+
+%   Insere elementos pós-textuais
+
+\input{./01-texto/agradecimentos}	% Arquivo a ser editado: contém os “agradecimentos” a pessoas e/ou instituições que apoiaram a realização do trabalho
+			% Não se pode esquecer de agradecer apropriadamente às instituições de fomento à pesquisa
+\input{./01-texto/abstract}			% Arquivo a ser editado: contém o “abstract” em inglês
+\input{./04-referencias/referencias}	% Arquivo não-editável: carrega o arquivo “myrefs.bib” (coloque-o no diretório raiz) e o formata conforme a ABNT
+
+\end{document}
